@@ -1,4 +1,4 @@
-# knockri Tech Challenge
+# Knockri Tech Challenge
 ## Getting Started
 To start frontend:
 ```sh
