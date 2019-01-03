@@ -66,29 +66,37 @@ export default class Comments extends Component {
     }
 
     saveComment = () => {
-        let updatedQuestions = []
-        for (let video of this.state.applications.videos) {
-            if (video.questionId === this.props.questionId) {
-                let updatedComment = {
-                    src: video.src,
-                    questionId: video.questionId,
-                    comments: this.state.commentInput
-                }
-                updatedQuestions.push(updatedComment)
-            } else {
-                updatedQuestions.push(video)
-            }
-        }
-        let updatedApplication = {
-            id: this.props.currentApplicationId,
-            videos: [...updatedQuestions]
-        }
 
-        axios.put('http://localhost:3010/applications/' + this.props.currentApplicationId, updatedApplication).then((res) => {
-            this.inputText.value = ""
+        axios.get('http://localhost:3010/applications/' + this.props.currentApplicationId).then((res) => {
+            let applications = res.data
             this.setState({
-                saveButtonClicked: true,
-                typing: false
+                applications: { ...applications },
+            })
+        }).then(()=>{
+            let updatedQuestions = []
+            for (let video of this.state.applications.videos) {
+                if (video.questionId === this.props.questionId) {
+                    let updatedComment = {
+                        src: video.src,
+                        questionId: video.questionId,
+                        comments: this.state.commentInput
+                    }
+                    updatedQuestions.push(updatedComment)
+                } else {
+                    updatedQuestions.push(video)
+                }
+            }
+            let updatedApplication = {
+                id: this.props.currentApplicationId,
+                videos: [...updatedQuestions]
+            }
+    
+            axios.put('http://localhost:3010/applications/' + this.props.currentApplicationId, updatedApplication).then((res) => {
+                this.inputText.value = ""
+                this.setState({
+                    saveButtonClicked: true,
+                    typing: false
+                })
             })
         })
     }
