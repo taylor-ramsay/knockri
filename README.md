@@ -16,4 +16,4 @@ $ npm start
 For this challenge, I used react (for building the frontend), I relied on axios (for making server requests), react-materialize(for styling), and react-player (for rendering video). 
 
 ## With more time...
-With more time, I would have like to improve the styling, improved the saving functionality to edit only the comment field as opposed to updating the application object, and maybe include an identifier for which videos have been watched.
+With more time, I would have like to improve the styling, refactored some code, improved the saving functionality to edit only the comment field as opposed to updating the application object, and maybe include an identifier for which videos have been watched.
