@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import uuidv1 from 'uuid/v1';
 import ReactPlayer from 'react-player'
 import Comments from './Comments'
 

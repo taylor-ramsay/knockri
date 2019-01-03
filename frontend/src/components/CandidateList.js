@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import uuidv1 from 'uuid/v1';
 
 export default class CandidateList extends Component {
 
@@ -27,7 +26,7 @@ export default class CandidateList extends Component {
     render() {
         let candidatesJSX = this.state.candidates.map((candidate)=>{
             return(
-                <div key={uuidv1()}>
+                <div>
                     <span className="candiatelistname" onClick={(e)=>{this.props.handleSelectedCandidateOnClick(e, candidate.applicationId, candidate.name)}}>{candidate.name} <span className="greyed">{candidate.id}</span></span>
                 </div>
             )
